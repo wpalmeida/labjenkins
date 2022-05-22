@@ -9,7 +9,6 @@ pipeline {
                 }
             }
         }
-
         stage ('Push Image') {
             steps {
                 script {
@@ -20,7 +19,11 @@ pipeline {
                 }
             }
         }
-
+        stage ('Set OCI Credentials') {
+            steps {
+                sh('sudo /root/bin/oci iam compartment list')
+            }
+        }
         stage ('Deploy Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
