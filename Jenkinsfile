@@ -5,7 +5,7 @@ pipeline {
         stage ('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("wpalmeida/nginx:latest", '-f .Dockerfile')
+                    dockerapp = docker.build("wpalmeida/nginx:latest")
                 }
             }
         }
