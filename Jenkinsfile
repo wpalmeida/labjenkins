@@ -9,6 +9,7 @@ pipeline {
                 }
             }
         }
+
         stage ('Push Image') {
             steps {
                 script {
@@ -16,6 +17,14 @@ pipeline {
                         dockerapp.push('latest')
                         dockerapp.push("${env.BUILD_ID}")
                     }
+                }
+            }
+        }
+
+        stage ('Deploy Kubernetes') {
+            steps {
+                withKubeConfig([credentialId: 'kubeconfig']) {
+                    sh 'kubectl apply -f deployment.yaml'
                 }
             }
         }

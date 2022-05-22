@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkinsapp
+  labels:
+    app: jenkins
+spec:
+  selector:
+    matchLabels:
+      app: jenkins
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jenkins
+        tier: frontend
+    spec:
+      containers:
+      - image: nginx
+        name: jenkinsapp
+        ports:
+        - containerPort: 80
+          name: app-port
