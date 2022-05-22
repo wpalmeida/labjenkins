@@ -5,7 +5,7 @@ pipeline {
         stage ('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("wpalmeida/nginx:latest")
+                    dockerapp = docker.build("wpalmeida/nginx:${env.BUILD_ID}")
                 }
             }
         }
