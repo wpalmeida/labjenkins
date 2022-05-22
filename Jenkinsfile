@@ -19,11 +19,6 @@ pipeline {
                 }
             }
         }
-        stage ('Set OCI Credentials') {
-            steps {
-                sh('echo Hello')
-            }
-        }
         stage ('Deploy Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
