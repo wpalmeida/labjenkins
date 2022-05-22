@@ -21,7 +21,7 @@ pipeline {
         }
         stage ('Setup OCI CLI') {
             steps {
-                sh 'curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh'
+                sh 'wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh'
                 sh 'bash install.sh'
             }
         }
