@@ -19,11 +19,6 @@ pipeline {
                 }
             }
         }
-        stage ('Setup OCI CLI') {
-            steps {
-                sh 'bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)" --accept-all-defaults'
-            }
-        }
         stage ('Deploy Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
