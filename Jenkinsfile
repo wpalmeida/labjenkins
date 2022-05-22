@@ -21,7 +21,7 @@ pipeline {
         }
         stage ('Set OCI Credentials') {
             steps {
-                sh('sudo /root/bin/oci iam compartment list')
+                sh('echo Hello')
             }
         }
         stage ('Deploy Kubernetes') {
